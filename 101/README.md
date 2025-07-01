@@ -8,7 +8,7 @@ Q: How to compare two trees?</br>
 A: Flatten two trees into two lists, and then compare them.</br>
 2.</br>
 Q: How to flatten a tree?</br>
-A: recursive, there are for travesal type</br>
+A: recursive, there are four travesal type</br>
 
 ### Four traversal type:
 #### DFS, Depth-first Search
