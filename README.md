@@ -1,2 +1,2 @@
 # Manually_LeeyCode
-For practicing basic coding skill manually, including problem solving thought and edge test.
+AI is powerful leverage. Having strong basic knowledge makes me use it more effectively.
