@@ -8,9 +8,9 @@ Q: How to compare two trees?</br>
 A: Flatten two trees into two lists, and then compare them.</br>
 2.</br>
 Q: How to flatten a tree?</br>
-A: recursive, Ask GPT how to flatten a tree by using recursive: there are four travesal types for flattening a tree</br>
+A: recursive, Ask GPT how to flatten a tree by using recursive: there are three travesal types for flattening a tree</br>
 
-### Four traversal type:
+### Three traversal type:
 #### DFS, Depth-first Search
 ##### Preorder:
 root->left->right</br>
@@ -19,6 +19,7 @@ left->root->right</br>
 ##### Postorder:
 left->right->root</br>
 </br>
+### Another traversal type(not recursive)
 #### BFS, Breadth-First Search
 ##### level-order:
 layer1->layer2->layeer3
