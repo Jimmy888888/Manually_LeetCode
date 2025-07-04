@@ -23,3 +23,39 @@ left->right->root</br>
 #### BFS, Breadth-First Search
 ##### level-order:
 layer1->layer2->layeer3
+
+### C++ code:
+
+```cpp
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        if(!root){
+            return true;
+        }
+        
+        vector<int> l_result, r_result;
+        
+        perOrder(root->left, l_result);
+        perOrder(root->right, r_result);
+        
+        return l_result == r_result;
+    }
+
+    void perOrder(TreeNode *root, vector<int> &result){
+        if(!root){
+            return;
+        }
+        
+        result.push_back(root->val);
+        perOrder(root->left, result);
+        perOrder(root->right, result);
+    }
+
+};
+```
+
+### result:
+#### fail , because "Symmetric" dosen't mean "the same", it's more like "mirror"
+
+### Next, 
