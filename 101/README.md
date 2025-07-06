@@ -58,4 +58,72 @@ public:
 ### result:
 #### fail , because "Symmetric" dosen't mean "the same", it's more like "mirror"
 
-### Next, 
+### Next, define "mirror"
+#### left node value == right node value
+#### Note: -100 <= Node.val <= 100
+```cpp
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        if(!root){
+            return true;
+        }
+        
+        vector<int> l_result, r_result;
+        
+        perOrder(root->left, l_result);
+        perOrder(root->right, r_result);
+        
+        return l_result == r_result;
+    }
+
+    void perOrder(TreeNode *root, vector<int> &result){
+        if(!root){
+            result.push_back(101);
+            return;
+        }
+        
+        result.push_back(root->val);
+        perOrder(root->left, result);
+        perOrder(root->right, result);
+    }
+
+    void perOrderRev(TreeNode *root, vector<int> &result){
+        if(!root){
+            result.push_back(101);
+            return;
+        }
+        
+        result.push_back(root->val);
+        perOrderRev(root->right, result);
+        perOrderRev(root->left, result);
+    }
+};
+```
+
+### result:
+#### pass, time complexity O(N)
+
+### other solution:
+#### use thought of "Mirror"
+```cpp
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        if(!root){return true;}
+        return isMirror(root->left, root->right);
+    }
+
+    bool isMirror(TreeNode* t1, TreeNode* t2){
+        if(!t1 && !t2){return true;}
+        if(!t1 || !t2){return false;}
+
+        return (t1->val == t2->val) &&
+        isMirror(t1->left, t2->right) &&
+        isMirror(t1->right, t2->left);
+    }
+};
+```
+### result:
+#### pass, time complexity O(N)
+
