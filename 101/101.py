@@ -5,7 +5,7 @@ class TreeNode:
     self.right = right
 
 class Solution:
-  def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+  def isSymmetric(self, root: Optional[TreeNode]) -> bool: # Python automatically passes self
     if not root:
       return True
 
