@@ -2,7 +2,7 @@ name: Multi-Language Tests
 
 on:
   push:
-    branches:[main, develop]
+    branches: main
 
 jobs:
   test-cpp:
@@ -13,5 +13,5 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y build-essential
     - name: Build and Test C++
       run: |
-        cd cpp
+        cd unit_tests/cpp
         make test
