@@ -1,4 +1,4 @@
-# Manually_LeeyCode
+# Manually_LeetCode
 AI is powerful leverage. Having strong basic knowledge makes me use it more effectively.
 <br/>
 <br/>
