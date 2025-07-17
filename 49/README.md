@@ -1,11 +1,14 @@
 Group Anagrams
 
 Input: strs = ["eat","tea","tan","ate","nat","bat"]
-Output: [ ["bat"],["nat","tan"],["ate","eat","tea"] ]
+
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
 
 ## thought: 
 input：string array
+
 processor : map
+
 output : array of string array
 
 ## problem:
@@ -67,13 +70,19 @@ func groupAnagrams(strs []string) [][]string {
 ```
 
 ## result: pass 
+
 but too slow
+
 ### time complexity: 
+
 N = MAX len(strs) , L = MAX len(strs[i])
+
 --> O(N*(N + L))
 
 ## another solution:
+
 should make good use of map
+
 the "key" should be found directly
 
 sort the string first
@@ -113,7 +122,9 @@ func groupAnagrams(strs []string) [][]string {
 ```
 
 ### time complexity: 
+
 N = MAX len(strs) , L = MAX len(strs[i])
+
 --> O(N⋅LlogL)
 
 
