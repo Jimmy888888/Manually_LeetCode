@@ -1,6 +1,8 @@
+package anagrams
+
 import "slices"
 
-func groupAnagrams(strs []string) [][]string {
+func GroupAnagrams(strs []string) [][]string {
 
 	sortMaps := make(map[string]int)
 	outPut := make([][]string, 0)
@@ -18,7 +20,7 @@ func groupAnagrams(strs []string) [][]string {
 		}
 
 		if isInMap == false {
-			newGroupId = len(sortMaps)
+			newGroupId := len(sortMaps)
 			sortMaps[sortStr] = newGroupId
 			newGroup := make([]string, 0)
 			newGroup = append(newGroup, str)

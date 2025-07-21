@@ -1,10 +1,12 @@
+package symmetric
+
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
 	Right *TreeNode
 }
 
-func isSymmetric(root *TreeNode) bool {
+func IsSymmetric(root *TreeNode) bool {
 	if root == nil {
 		return true
 	}
