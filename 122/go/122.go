@@ -1,33 +1,17 @@
-package anagrams
+func maxProfit(prices []int) int {
+	
+	buy := prices[0]
+	profit := 0
 
-import "slices"
-
-func GroupAnagrams(strs []string) [][]string {
-
-	sortMaps := make(map[string]int)
-	outPut := make([][]string, 0)
-
-	for _, str := range strs {
-
-		runesStr := []rune(str)
-		slices.Sort(runesStr)
-		sortStr := string(runesStr)
-
-		GroupId, isInMap := sortMaps[sortStr]
-
-		if isInMap == true {
-			outPut[GroupId] = append(outPut[GroupId], str)
-		}
-
-		if isInMap == false {
-			newGroupId := len(sortMaps)
-			sortMaps[sortStr] = newGroupId
-			newGroup := make([]string, 0)
-			newGroup = append(newGroup, str)
-			outPut = append(outPut, newGroup)
-		}
-
+	if len(prices) < 2 {
+		return profit
 	}
-
-	return outPut
+	
+	for _, price := range prices {
+		if price > buy {
+			profit += price - buy
+		}
+		buy = price
+	}
+	return profit
 }

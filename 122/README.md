@@ -1,131 +1,69 @@
-Group Anagrams
+go forward only
 
-Input: strs = ["eat","tea","tan","ate","nat","bat"]
-Output: [ ["bat"],["nat","tan"],["ate","eat","tea"] ]
+can only hold at most one share of the stock at any time
 
-## thought: 
-input：string array
+trying to find the max profit
 
-processor : map
+[7,1,5,3,6,4]
 
-output : array of string array
+7: -6, -2, -4, -1, -3
 
-## problem:
-how to define the key of map
+1: 4, 2, 5, 3
 
-must to process every character of the strings in the InputStr
+5: -2, 1, -1
 
-use  [26]int to check a str is in a anagram
+3: 3, 1
 
+6: -2
 
-```go
-func groupAnagrams(strs []string) [][]string {
+it looks like not work
 
-	hashMaps := make([][26]int, 0)
-	outPut := make([][]string, 0)
-	
-	for _, str := range strs{
-	
-		var curMap [26]int
-		
-		for _, r := range str{
-			curMap[r - 'a']++
-		}
-	
-		findMap := false
-		ID := 0
-		
-		for hashID, theMap := range hashMaps{
-			
-			findMap = true
-			for i := range curMap{
-				if curMap[i] != theMap[i]{
-					findMap = false
-					break
-				}
-			}
-			
-			if findMap == true{
-				ID = hashID
-				break
-			}
-		}
-	
-		if findMap == true{
-			outPut[ID] = append(outPut[ID], str)
-		}
-	
-		if findMap == false{
-			hashMaps = append(hashMaps, curMap)
-			newGroup := make([]string, 0)
-			newGroup = append(newGroup, str)
-			outPut = append(outPut, newGroup)
-		}
-	
-	}
-	
-	return outPut
-}
-```
+## only can go forward
 
-## result: pass 
+using Greedy algorithm, partical best will be global best
 
-but too slow
+ex: 
+[3,6,1,4,10]
 
-### time complexity: 
+### way one: trying to find the best buy and sell point
 
-N = MAX len(strs) , L = MAX len(strs[i])
+buy: 3
+sell: 6
+profit: 3
 
---> O(N*(N + L))
+buy: 6
+sell: 6
+profit: 0
 
-## another solution:
+buy: 1
+sell: 10
+profit: 9
 
-should make good use of map
+total profit: 12
 
-the "key" should be found directly
+### way two: greedy algorithm
 
-sort the string first
+buy: 3
+sell: 6
+profit: 3
 
-```go
-improt "slices"
+buy: 6
+sell: 6
+profit: 0
 
-func groupAnagrams(strs []string) [][]string {
+buy: 1
+sell: 4
+profit: 3
 
-	sortMaps := make(map[string] int)
-	outPut := make([][]string, 0)
-	
-	for _, str := range strs{
+buy: 4
+sell: 10
+profit: 6
 
-		runesStr := []rune(str)
-		slices.Sort(runesStr)
-		sortStr := string(runesStr)
-		
-		GroupId, isInMap := sortMaps[sortStr]
-	
-		if isInMap == true {
-			outPut[GroupId] = append(outPut[GroupId], str)
-		}
-	
-		if isInMap == false {
-			newGroupId = len(sortMaps)
-			sortMaps[sortStr] = newGroupId
-			newGroup := make([]string, 0)
-			newGroup = append(newGroup, str)
-			outPut = append(outPut, newGroup)
-		}
-	
-	}
-	
-	return outPut
-}
-```
-
-### time complexity: 
-
-N = MAX len(strs) , L = MAX len(strs[i])
-
---> O(N⋅LlogL)
+total profit: 12
 
 
+## the result is the same
 
+### the greedy algorithm strategy
 
+at every point, if it is higher than the previous point, then sell it

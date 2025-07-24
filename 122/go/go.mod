@@ -1,3 +1,3 @@
-module example.com/anagrams
+module example.com/buyandsellstock
 
 go 1.22
