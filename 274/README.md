@@ -34,11 +34,11 @@ func hIndex(citations []int) int {
 }
 ```
 
-### result : failed , because only consider the citedTimes , should consider "i+1" too 
+#### result : failed in TestCase [100] , because only consider the citedTimes , should consider "i+1" too 
 
 ## use the same way , but the point is paper amount
 
-### find the first paper index that paper amount > citedTimes
+find the first paper index that paper amount > citedTimes
 
 ```go
 import "sort"
