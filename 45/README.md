@@ -2,9 +2,9 @@
 
 # Greedy
 
-take the max num in every step, untill reach the nums.length-1
+take the max num in "every" step, untill reach the nums.length-1
 
-need to find the max in every step
+need to find the max in "every" step
 
 should more clear
 
@@ -17,46 +17,35 @@ defind : 1. find 2. jump
  */
 
 var jump = function(nums) {
-    let min_step = 0;
-    let i = 0;
-    let jup_to = 0;
-    let loc_max_jup = 0;
-    while ( i < nums.length - 1 ){
+    let min_steps = 0;
+    let cur_bound = 0;
+    let cur_max = 0;
 
-        // check whether can reach the end
-        if ( i + nums[i] >= nums.length - 1){
-            min_step += 1;
-            console.log(i + nums[i]);
+    let n = nums.length - 1
+
+    if (n <= 0){
+        return 0;
+    }
+
+    for (let i = 0; i < n; i++){
+        cur_max = Math.max(cur_max, i + nums[i]);
+
+        if(i === cur_bound){
+            cur_bound = cur_max;
+            min_steps += 1;
+        }
+
+        if (cur_bound >= n) {
             break;
         }
 
-        // find, the biggest and the farthest step
-        jup_to = i + nums[i];
-        loc_max_jup = jup_to;
-        for (let j = i+1; j < i + nums[i]; j++){
-            if(loc_max_jup < j + nums[j]){
-                jup_to = j;
-                loc_max_jup = j + nums[j];
-            }
-        }
-
-        // handle edge case
-        if (nums[jup_to] === 0){
-            return 0;
-        }
-
-        // jump
-        i = jup_to;
-        console.log(i);
-        min_step += 1;
-        
     }
 
-    return min_step;
+    return min_steps;
 };
 ```
 
-### result: not pass 
+### result: pass
 
 # DP
 
