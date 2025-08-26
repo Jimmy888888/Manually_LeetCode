@@ -1,34 +1,27 @@
-
 var jump = function(nums) {
-    let min_step = 0;
-    let i = 0;
-    while ( i < nums.length - 1 ){
-        let loc_max = 0;
-        let jup_to = 0;
+    let min_steps = 0;
+    let cur_bound = 0;
+    let cur_max = 0;
 
-        // test 
-        if ( i + nums[i] > nums.length - 1){
-            min_step += 1;
-        }
+    let n = nums.length - 1
 
-        // find
-        for (let j = i+1; j <= i + nums[i]; j++){
-            }else if(loc_max < nums[j]){
-                loc_max = nums[j];
-                jup_to = j;
-            }
-        }
-        // handle edge case
-        if (loc_max === 0){
-            return 0;
-        }
-
-        // jump
-        i = jup_to;
-        console.log(jup_to);
-        min_step += 1;
-        
+    if (n <= 0){
+        return 0;
     }
 
-    return min_step;
+    for (let i = 0; i < n; i++){
+        cur_max = Math.max(cur_max, i + nums[i]);
+
+        if(i === cur_bound){
+            cur_bound = cur_max;
+            min_steps += 1;
+        }
+
+        if (cur_bound >= n) {
+            break;
+        }
+
+    }
+
+    return min_steps;
 };
