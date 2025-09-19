@@ -1,0 +1,41 @@
+# 62. Unique Paths
+
+## DP
+
+### assume :
+- dp[i][j] is the possible unique paths at grid[i][j]
+
+- dp[i][j] = dp[i-1][j] + dp[i][j-1]
+
+### base cases :
+- dp[i][0] = 1
+
+- dp[0][j] = 1
+
+```js
+/**
+ * @param {number} m
+ * @param {number} n
+ * @return {number}
+ */
+var uniquePaths = function(m, n) {
+    // make 2d dp
+    let dp = new Array(m).fill(null).map(() => Array(n).fill(0));
+
+    // base cases
+    for (let i = 0; i < m; i++){
+        dp[i][0] = 1;
+    }
+    for (let j = 0; j < n; j++){
+        dp[0][j] = 1;
+    }
+
+    for (let i = 1; i < m; i++){
+        for (let j = 1; j < n; j++){
+            dp[i][j] = dp[i-1][j] + dp[i][j-1];
+        }
+    }
+
+    return dp[m-1][n-1];
+};
+```
